@@ -1,12 +1,11 @@
 SRC = $(wildcard src/*.asm)
-SRCOBJ = $(SRC:.asm=.rel)
-OBJ = $(SRCOBJ:src=build)
+OBJ = $(patsubst src/%.asm,build/%,$(SRC))
 INCLUDE = $(wildcard include/*.h)
 
 all: project
 
 project: $(OBJ)
-	aslink -i $(OBJ)
+	aslink -i+ project.hex $(OBJ)
 
-build/%.rel: src/%.asm $(INCLUDE)
-	asb865 -o $(@F)
+build/%: src/%.asm $(INCLUDE)
+	asb865 -o+ $@ $<
