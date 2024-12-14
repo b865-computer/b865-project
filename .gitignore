@@ -1,2 +1,6 @@
 *.rel
 *.hex
+*.cdb
+*.map
+build/*
+!build/README.txt

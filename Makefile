@@ -1,12 +1,18 @@
 SRC = $(wildcard src/*.asm)
 OBJ = $(patsubst src/%.asm,build/%.rel,$(SRC))
+DBG_SYM = $(patsubst %.rel,%.noi,$(OBJ))
 
-all: project
+NAME = project
 
-project: project.hex
+all: $(NAME)
+
+$(NAME): $(NAME).hex config.json
 
 project.hex: $(OBJ)
-	aslink -i+ project.hex -a CODE=0x8000 $(OBJ)
+	aslink -n -j -i+ $(NAME).hex -a CODE=0x8000 $(OBJ)
 
 build/%.rel: src/%.asm Makefile
-	asb865 -o+ $@ $<
+	asb865 -j -o+ $@ $<
+
+config.json: $(DBG_SYM) Makefile
+	echo {"name": "$(NAME)", "dbg": "$<"} > $@
