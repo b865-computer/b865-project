@@ -1,5 +1,10 @@
 ; Project main
     .area CODE
 
-_main:
-    rts
+main:
+loop:
+    jmp loop
+
+    .area CODEIVT (ABS)
+    .org 0xFFFE
+    .word main
