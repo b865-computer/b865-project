@@ -2,6 +2,6 @@
     .globl _foo
     .area CODE
 _foo::
-    inx
-    inx
+    mov r0 #0x01
+    mov 0x0201 r0
     rts
