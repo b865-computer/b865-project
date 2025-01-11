@@ -4,3 +4,4 @@
 *.map
 build/*
 !build/README.txt
+*.b865
