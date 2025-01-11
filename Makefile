@@ -11,7 +11,7 @@ $(NAME): $(NAME).hex
 project.hex: $(OBJ)
 	$(eval DBG_SYM := $(patsubst %.rel,%.noi,$<))
 	aslink	-n -j -i+ $(NAME).hex -a CODE=0x8000 $(OBJ)
-	echo	{"name": "$(NAME)", "dbg": "$(DBG_SYM)"} > config.json
+	echo	{"name": "$(NAME)", "dbg": "$(DBG_SYM)"} > config.b865
 
 build/%.rel: src/%.asm Makefile
 	asb865	-g -j -s -o+ $@ $<
