@@ -5,3 +5,6 @@
 build/*
 !build/README.txt
 *.b865
+*.ihx
+*.bin
+*.omf
