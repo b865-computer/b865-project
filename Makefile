@@ -10,7 +10,7 @@ $(NAME): $(NAME).hex
 
 project.hex: $(OBJ)
 	sdld	-n -y -i+ $(NAME).hex -b CODE=0x8000 $(OBJ)
-	echo	'{"name": "$(NAME)", "dbg": "$(NAME).cdb"}' > $(NAME).b865
+	echo	'{"name": "$(NAME)", "dbg": "$(NAME).cdb", "bin": "$(NAME).bin"}' > $(NAME).b865
 	objcopy	-I ihex -O binary $(NAME).ihx $(NAME).bin
 
 build/%.rel: src/%.asm Makefile
