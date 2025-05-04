@@ -6,9 +6,9 @@ NAME = project
 
 all: $(NAME)
 
-$(NAME): $(NAME).hex
+$(NAME): $(NAME).ihx
 
-$(NAME).hex: $(OBJ)
+$(NAME).ihx: $(OBJ)
 	echo	$(OBJ)  | tr ' ' '\n' > $(NAME).lnk
 	sdld	-n -m -u -y -b CODE=0x8000 -i+ $(NAME).ihx -f $(NAME)
 	echo	'{"name": "$(NAME)", "dbg": "$(NAME).cdb", "bin": "$(NAME).bin", "map": "$(NAME).map"}' > $(NAME).b865
