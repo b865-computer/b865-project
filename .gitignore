@@ -8,3 +8,4 @@ build/*
 *.ihx
 *.bin
 *.omf
+*.lnk
