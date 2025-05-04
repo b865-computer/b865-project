@@ -1,6 +1,5 @@
 SRC = $(wildcard src/*.asm)
 OBJ = $(patsubst src/%.asm,build/%.rel,$(SRC))
-# DBG_SYM = $(patsubst %.rel,%.cdb,$(OBJ))
 
 NAME = project
 
